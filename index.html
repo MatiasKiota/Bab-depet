@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Sitter | Cuidado no conforto do seu lar</title>
+
+<style>
+:root {
+  --roxo: #51334e;
+  --rosa: #ead9e5;
+  --fundo: #faf8f7;
+  --texto: #29252b;
+  --cinza: #777078;
+  --borda: #e9e3e8;
+  --verde: #315c45;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid var(--borda);
+}
+
+nav {
+  max-width: 1050px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--roxo);
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 18px;
+}
+
+.logo small {
+  display: block;
+  color: var(--cinza);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+nav a {
+  color: var(--roxo);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.hero {
+  max-width: 1050px;
+  margin: auto;
+  padding: 65px 25px;
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.tag {
+  color: var(--roxo);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h1 {
+  color: var(--roxo);
+  font-family: Georgia, serif;
+  font-size: clamp(38px, 6vw, 62px);
+  line-height: 1.1;
+  font-weight: normal;
+  margin: 15px 0;
+}
+
+.hero p {
+  color: var(--cinza);
+  font-size: 17px;
+  max-width: 550px;
+}
+
+.hero-box {
+  background: var(--rosa);
+  border-radius: 22px;
+  padding: 30px;
+}
+
+.hero-box strong {
+  color: var(--roxo);
+  font-family: Georgia, serif;
+  font-size: 29px;
+  font-weight: normal;
+}
+
+.hero-box p {
+  font-size: 13px;
+}
+
+main {
+  max-width: 1050px;
+  margin: auto;
+  padding: 0 25px 60px;
+}
+
+h2 {
+  color: var(--roxo);
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+.subtitulo {
+  color: var(--cinza);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.valores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  padding: 22px;
+}
+
+.card span {
+  color: var(--cinza);
+  font-size: 12px;
+}
+
+.card strong {
+  display: block;
+  color: var(--roxo);
+  font-family: Georgia, serif;
+  font-size: 29px;
+  margin: 5px 0;
+}
+
+.card p {
+  color: var(--cinza);
+  font-size: 13px;
+  margin: 0;
+}
+
+.calculadora {
+  background: white;
+  border: 1px solid var(--borda);
+  border-radius: 22px;
+  padding: 30px;
+  margin-top: 35px;
+  box-shadow: 0 12px 35px #3020300b;
+}
+
+.campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+
+input, select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd5dc;
+  border-radius: 10px;
+  background: white;
+  font-size: 15px;
+  color: var(--texto);
+}
+
+input:focus, select:focus {
+  outline: 2px solid var(--rosa);
+  border-color: var(--roxo);
+}
+
+.info {
+  background: #faf5f8;
+  border-radius: 12px;
+  padding: 15px;
+  color: #62545f;
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+.total {
+  background: var(--roxo);
+  color: white;
+  border-radius: 16px;
+  padding: 23px;
+  margin-top: 22px;
+}
+
+.total small {
+  color: #e8dfe7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.total strong {
+  display: block;
+  font-family: Georgia, serif;
+  font-size: 36px;
+  margin: 5px 0;
+}
+
+#detalhes {
+  color: #e8dfe7;
+  font-size: 12px;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  width: 100%;
+  background: var(--verde);
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.servicos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.servicos div {
+  background: white;
+  border: 1px solid var(--borda);
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 13px;
+}
+
+footer {
+  border-top: 1px solid var(--borda);
+  padding: 28px;
+  text-align: center;
+  color: var(--cinza);
+  font-size: 12px;
+}
+
+@media(max-width:700px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 40px;
+  }
+
+  .valores {
+    grid-template-columns: 1fr;
+  }
+
+  .campos {
+    grid-template-columns: 1fr;
+  }
+
+  .servicos {
+    grid-template-columns: 1fr;
+  }
+
+  .calculadora {
+    padding: 20px;
+  }
+
+  nav a {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="logo">
+      PET SITTER
+      <small>CUIDADO NO CONFORTO DO SEU LAR</small>
+    </div>
+    <a href="#orcamento">FAZER ORÇAMENTO ↓</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <div class="tag">Osasco e região · Atendimento domiciliar</div>
+    <h1>Seu pet bem cuidado.<br>Você mais tranquilo.</h1>
+    <p>
+      Cuidado, carinho e companhia para seu animalzinho
+      no conforto e na segurança da própria casa.
+    </p>
+  </div>
+
+  <div class="hero-box">
+    <strong>Cuidado de verdade, sem mudar a rotina.</strong>
+    <p>
+      Alimentação, água fresquinha, higiene, brincadeiras
+      e companhia enquanto você estiver fora.
+    </p>
+  </div>
+</section>
+
+<main>
+
+<section>
+  <h2>Valores de atendimento</h2>
+  <p class="subtitulo">
+    Valores-base para atendimento em Osasco.
+  </p>
+
+  <div class="valores">
+    <div class="card">
+      <span>UMA VISITA POR DIA</span>
+      <strong>R$ 45</strong>
+      <p>40 a 50 minutos de atendimento.</p>
+    </div>
+
+    <div class="card">
+      <span>DUAS VISITAS POR DIA</span>
+      <strong>R$ 80</strong>
+      <p>Duas visitas de 40 a 50 minutos cada.</p>
+    </div>
+
+    <div class="card">
+      <span>PASSEIO ADICIONAL</span>
+      <strong>R$ 10 / 20</strong>
+      <p>30 minutos: R$ 10 · 1 hora: R$ 20.</p>
+    </div>
+  </div>
+</section>
+
+<section class="calculadora" id="orcamento">
+
+  <div class="tag">ORÇAMENTO RÁPIDO</div>
+  <h2>Monte sua estimativa</h2>
+  <p class="subtitulo">
+    Escolha as datas e os serviços desejados.
+    O valor será calculado automaticamente.
+  </p>
+
+  <div class="campos">
+
+    <div class="campo">
+      <label for="inicio">Data da primeira visita</label>
+      <input type="date" id="inicio">
+    </div>
+
+    <div class="campo">
+      <label for="fim">Data da última visita</label>
+      <input type="date" id="fim">
+    </div>
+
+    <div class="campo">
+      <label for="visitas">Visitas por dia</label>
+      <select id="visitas">
+        <option value="1">1 visita — R$ 45</option>
+        <option value="2">2 visitas — R$ 80</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="passeio">Passeio adicional</label>
+      <select id="passeio">
+        <option value="0">Não desejo passeio</option>
+        <option value="10">30 minutos — R$ 10</option>
+        <option value="20">1 hora — R$ 20</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="quantidadePasseios">Passeios por dia</label>
+      <select id="quantidadePasseios">
+        <option value="0">Nenhum</option>
+        <option value="1">1 passeio por dia</option>
+        <option value="2">2 passeios por dia</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="local">Bairro e cidade</label>
+      <input type="text" id="local"
+        placeholder="Ex.: Centro, Osasco">
+    </div>
+
+    <div class="campo">
+      <label for="pets">Quantidade de pets</label>
+      <select id="pets">
+        <option value="1">1 pet</option>
+        <option value="2">2 pets</option>
+        <option value="3">3 pets</option>
+        <option value="4">4 ou mais pets</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="info">
+    <strong>Datas especiais:</strong>
+    nos dias 24/12/2026, 25/12/2026,
+    31/12/2026 e 01/01/2027,
+    será acrescentado R$ 15 por visita.
+    Se forem duas visitas no mesmo dia,
+    o adicional será de R$ 30.
+  </div>
+
+  <div class="total">
+    <small>Estimativa do atendimento</small>
+    <strong id="valor">Selecione as datas</strong>
+    <div id="detalhes">
+      O cálculo aparecerá aqui.
+    </div>
+  </div>
+
+  <button onclick="enviarWhatsApp()">
+    Solicitar orçamento pelo WhatsApp ↗
+  </button>
+
+  <p class="subtitulo">
+    Ao clicar, você enviará as informações da sua solicitação
+    diretamente para a responsável pelo atendimento.
+  </p>
+
+</section>
+
+<section style="margin-top:40px">
+  <h2>O que está incluído?</h2>
+  <p class="subtitulo">
+    O cuidado é combinado com você, respeitando
+    as orientações e a rotina do seu pet.
+  </p>
+
+  <div class="servicos">
+    <div>✓ Alimentação conforme as instruções do tutor</div>
+    <div>✓ Troca de água e higienização dos potes</div>
+    <div>✓ Limpeza das necessidades e da área utilizada</div>
+    <div>✓ Brincadeiras, carinho e companhia</div>
+    <div>✓ Observação do comportamento e bem-estar</div>
+    <div>✓ Fotos e vídeos para manter o tutor informado</div>
+  </div>
+</section>
+
+<section style="margin-top:40px">
+  <h2>Informações importantes</h2>
+  <div class="card">
+    <p>
+      • O atendimento é realizado mediante agendamento.<br>
+      • É combinada uma visita inicial para conhecer o pet e sua rotina.<br>
+      • Alimentação e materiais necessários ficam por conta do tutor.<br>
+      • Atendimento fora de Osasco depende de consulta de deslocamento.<br>
+      • Mais de um animal e necessidades específicas podem alterar o orçamento.<br>
+      • O valor exibido é uma estimativa e depende de confirmação.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  PET SITTER · OSASCO E REGIÃO<br>
+  Seu pet seguro, feliz e bem cuidado.
+</footer>
+
+<script>
+const WHATSAPP = "5511984654697";
+
+function dataLocal(valor) {
+  const [ano, mes, dia] = valor.split("-").map(Number);
+  return new Date(ano, mes - 1, dia, 12);
+}
+
+function moeda(valor) {
+  return valor.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+}
+
+function calcular() {
+  const inicio = document.getElementById("inicio").value;
+  const fim = document.getElementById("fim").value;
+
+  if (!inicio || !fim) {
+    document.getElementById("valor").textContent =
+      "Selecione as datas";
+    document.getElementById("detalhes").textContent =
+      "Informe a data inicial e a data final.";
+    return null;
+  }
+
+  const primeira = dataLocal(inicio);
+  const ultima = dataLocal(fim);
+
+  if (ultima < primeira) {
+    document.getElementById("valor").textContent =
+      "Datas inválidas";
+    document.getElementById("detalhes").textContent =
+      "A data final precisa ser igual ou posterior à inicial.";
+    return null;
+  }
+
+  const dias = Math.round(
+    (ultima - primeira) / 86400000
+  ) + 1;
+
+  if (dias > 90) {
+    document.getElementById("valor").textContent =
+      "Consulte o orçamento";
+    document.getElementById("detalhes").textContent =
+      "Para períodos acima de 90 dias, solicite atendimento.";
+    return null;
+  }
+
+  const visitas = Number(
+    document.getElementById("visitas").value
+  );
+
+  const valorPasseio = Number(
+    document.getElementById("passeio").value
+  );
+
+  const passeiosDia = Number(
+    document.getElementById("quantidadePasseios").value
+  );
+
+  const valorDiario = visitas === 1 ? 45 : 80;
+
+  let base = 0;
+  let visitasEspeciais = 0;
+
+  for (let i = 0; i < dias; i++) {
+    const data = new Date(primeira);
+    data.setDate(primeira.getDate() + i);
+
+    const ano = data.getFullYear();
+    const mes = data.getMonth() + 1;
+    const dia = data.getDate();
+
+    const especial =
+      (ano === 2026 && mes === 12 &&
+        [24, 25, 31].includes(dia)) ||
+      (ano === 2027 && mes === 1 && dia === 1);
+
+    base += valorDiario;
+
+    if (especial) {
+      visitasEspeciais += visitas;
+    }
+  }
+
+  const adicionalFeriados = visitasEspeciais * 15;
+
+  const adicionalPasseios =
+    dias * valorPasseio * passeiosDia;
+
+  const total =
+    base + adicionalFeriados + adicionalPasseios;
+
+  document.getElementById("valor").textContent =
+    moeda(total);
+
+  document.getElementById("detalhes").textContent =
+    `${dias} dia(s) · ${visitas} visita(s) por dia · ` +
+    `Base: ${moeda(base)} · Datas especiais: ` +
+    `${moeda(adicionalFeriados)} · Passeios: ` +
+    `${moeda(adicionalPasseios)}`;
+
+  return {
+    inicio,
+    fim,
+    dias,
+    visitas,
+    valorPasseio,
+    passeiosDia,
+    visitasEspeciais,
+    adicionalFeriados,
+    adicionalPasseios,
+    total,
+    local: document.getElementById("local").value,
+    pets: document.getElementById("pets").value
+  };
+}
+
+function enviarWhatsApp() {
+  const dados = calcular();
+
+  if (!dados) {
+    alert("Por favor, informe um período válido.");
+    return;
+  }
+
+  const dataInicio = dataLocal(dados.inicio)
+    .toLocaleDateString("pt-BR");
+
+  const dataFim = dataLocal(dados.fim)
+    .toLocaleDateString("pt-BR");
+
+  const passeio =
+    dados.valorPasseio === 10
+      ? "30 minutos"
+      : dados.valorPasseio === 20
+        ? "1 hora"
+        : "Não deseja passeio";
+
+  const mensagem =
+`Olá! Gostaria de solicitar um orçamento de Pet Sitter.
+
+Período: ${dataInicio} até ${dataFim}
+Total de dias: ${dados.dias}
+Visitas por dia: ${dados.visitas}
+Passeio: ${passeio}
+Quantidade de passeios por dia: ${dados.passeiosDia}
+Bairro/cidade: ${dados.local || "Não informado"}
+Quantidade de pets: ${dados.pets}
+
+Visitas em datas especiais: ${dados.visitasEspeciais}
+Adicional de datas especiais: ${moeda(dados.adicionalFeriados)}
+Adicional de passeios: ${moeda(dados.adicionalPasseios)}
+
+ESTIMATIVA: ${moeda(dados.total)}
+
+Gostaria de confirmar a disponibilidade e o valor final.`;
+
+  const link =
+    "https://wa.me/" + WHATSAPP +
+    "?text=" + encodeURIComponent(mensagem);
+
+  window.open(link, "_blank");
+}
+
+[
+  "inicio",
+  "fim",
+  "visitas",
+  "passeio",
+  "quantidadePasseios",
+  "local",
+  "pets"
+].forEach(id => {
+  document.getElementById(id).addEventListener(
+    "change",
+    calcular
+  );
+});
+
+</script>
+
+</body>
+</html>
